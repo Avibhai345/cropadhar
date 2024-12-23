@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up & Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 300px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .toggle {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .toggle a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .toggle a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="sign-up">
+        <h2>Sign Up</h2>
+        <form onsubmit="redirectToResizeFast(event)">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter username" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password" required>
+
+            <button type="submit">Pay 100 and Sign Up</button>
+        </form>
+        <div class="toggle">
+            Already have an account? <a href="#" onclick="toggleForm('login')">Login here</a>
+        </div>
+    </div>
+
+    <div class="container" id="login" style="display:none;">
+        <h2>Login</h2>
+        <form onsubmit="validateLogin(event)">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" placeholder="Enter username" required>
+
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="Enter password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <div class="toggle">
+            Don&#39;t have an account? <a href="#" onclick="toggleForm('sign-up')">Sign up here</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(formId) {
+            const signUpForm = document.getElementById('sign-up');
+            const loginForm = document.getElementById('login');
+
+            if (formId === 'sign-up') {
+                signUpForm.style.display = 'block';
+                loginForm.style.display = 'none';
+            } else {
+                signUpForm.style.display = 'none';
+                loginForm.style.display = 'block';
+            }
+        }
+
+        function redirectToResizeFast(event) {
+            event.preventDefault(); // Prevent form submission
+            window.location.href = "https://resizefast.onrender.com/";
+        }
+
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
+            const password = document.getElementById('login-password').value;
+
+            if (password === 'Pass@7447') {
+                window.location.href = "https://resizefast.onrender.com/";
+            } else {
+                alert('Invalid password. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
